@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой Discord App</title>
+    <style>
+        body { 
+            background: #36393f; 
+            color: white; 
+            font-family: Arial; 
+            padding: 20px; 
+            text-align: center;
+        }
+        button { 
+            background: #7289da; 
+            color: white; 
+            border: none; 
+            padding: 15px 25px; 
+            margin: 10px; 
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #2f3136;
+            padding: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Мой Web App</h1>
+        <p>Это тестовое приложение работает в Discord!</p>
+        
+        <button onclick="showMessage('✅ Кнопка работает!')">Тест кнопки</button>
+        <button onclick="showMessage('🚀 Функция 2!')">Функция 2</button>
+        <button onclick="showMessage('💰 Функция 3!')">Функция 3</button>
+        
+        <div id="message" style="margin-top: 20px; padding: 10px; background: #40444b; border-radius: 5px;"></div>
+    </div>
+
+    <script>
+        function showMessage(text) {
+            document.getElementById('message').innerHTML = text + ' ' + new Date().toLocaleTimeString();
+        }
+        
+        // Пытаемся подключиться к Discord
+        try {
+            if (window.DiscordSDK) {
+                const discordSdk = new DiscordSDK('ТВОЙ_APP_ID');
+                discordSdk.ready().then(() => {
+                    document.getElementById('message').innerHTML = '✅ Discord подключен!';
+                });
+            }
+        } catch (e) {
+            console.log('Discord не обнаружен');
+        }
+    </script>
+</body>
+</html>
