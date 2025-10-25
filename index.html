@@ -1,40 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
+    <title>Test App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background: #36393f;
+            margin: 0;
+            padding: 0;
+            width: 400px;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            font-family: Arial;
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
+        .app-container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
         button {
-            background: #7289da;
+            background: #ff6b6b;
             color: white;
             border: none;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 8px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
             cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>ТЕСТ</h1>
-    <p>Сайт работает!</p>
-    
-    <button onclick="alert('Кнопка работает!')">Тест 1</button>
-    <button onclick="alert('Вторая кнопка!')">Тест 2</button>
-    
-    <div id="status" style="margin-top: 20px; padding: 10px; background: #2f3136;">
-        Готов
+    <div class="app-container">
+        <h1>🎮 ПРИВЕТ!</h1>
+        <p>Это тестовое приложение</p>
+        
+        <button onclick="showMessage('✅ Кнопка 1 работает!')">Кнопка 1</button>
+        <button onclick="showMessage('🚀 Кнопка 2 работает!')">Кнопка 2</button>
+        
+        <div class="status" id="status">
+            Статус: готов к работе
+        </div>
     </div>
 
     <script>
-        document.getElementById('status').innerHTML = 
-            'Загружено: ' + new Date().toLocaleTimeString();
+        function showMessage(text) {
+            const status = document.getElementById('status');
+            status.innerHTML = `${text}<br>Время: ${new Date().toLocaleTimeString()}`;
+        }
+
+        // Проверяем размеры окна
+        console.log('Размер окна:', window.innerWidth, 'x', window.innerHeight);
     </script>
 </body>
 </html>
